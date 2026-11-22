@@ -1,0 +1,38 @@
+export const doctors = [
+  {
+    id: 1,
+    name: 'Dr. Olivia Turner, M.D.',
+    specialty: 'Dermato-Endocrinology',
+    rating: '5.0',
+    reviews: '60',
+    avatar: 'OT',
+    color: '#D8B9A9',
+  },
+  {
+    id: 2,
+    name: 'Dr. Alexander Bennett, Ph.D.',
+    specialty: 'Dermato-Genetics',
+    rating: '4.5',
+    reviews: '40',
+    avatar: 'AB',
+    color: '#B5C9D5',
+  },
+  {
+    id: 3,
+    name: 'Dr. Sophia Martinez, Ph.D.',
+    specialty: 'Cosmetic Bioengineering',
+    rating: '5.0',
+    reviews: '150',
+    avatar: 'SM',
+    color: '#D8C3B8',
+  },
+  {
+    id: 4,
+    name: 'Dr. Michael Davidson, M.D.',
+    specialty: 'Nano-Dermatology',
+    rating: '4.8',
+    reviews: '90',
+    avatar: 'MD',
+    color: '#B7C6D2',
+  },
+];

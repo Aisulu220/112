@@ -4,14 +4,15 @@
   "main": "index.ts",
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
-    "expo": "~57.0.27",
-    "expo-status-bar": "~57.0.1",
-    "react": "19.2.3",
-    "react-native": "0.86.3",
-    "react-native-maps": "1.27.2"
+    "expo": "~58.0.26",
+    "expo-status-bar": "~58.0.5",
+    "react": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-maps": "1.29.11"
   },
   "devDependencies": {
-    "@types/react": "~19.2.2",
+    "@expo/ngrok": "^4.1.0",
+    "@types/react": "~19.3.0",
     "typescript": "~6.0.3"
   },
   "scripts": {
