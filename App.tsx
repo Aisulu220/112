@@ -73,6 +73,36 @@ const routeMap: Record<string, string> = {
   skindiary: 'SkinDiary',
   rating: 'Rating',
   review: 'Review',
+  medicalhistory: 'MedicalHistory',
+  healthoverview: 'HealthOverview',
+  symptoms: 'Symptoms',
+  symptomdetails: 'SymptomDetails',
+  diagnosis: 'Diagnosis',
+  diagnosisdetails: 'DiagnosisDetails',
+  treatment: 'Treatment',
+  treatmentdetails: 'TreatmentDetails',
+  vaccination: 'Vaccination',
+  vaccinationdetails: 'VaccinationDetails',
+  bloodtest: 'BloodTest',
+  testresults: 'TestResults',
+  allergy: 'Allergy',
+  emergency: 'Emergency',
+  insurance: 'Insurance',
+  insurancedetails: 'InsuranceDetails',
+  hospital: 'Hospital',
+  hospitaldetails: 'HospitalDetails',
+  pharmacy: 'Pharmacy',
+  pharmacydetails: 'PharmacyDetails',
+  healthcalendar: 'HealthCalendar',
+  sleeptracker: 'SleepTracker',
+  watertracker: 'WaterTracker',
+  heartrate: 'HeartRate',
+  bloodpressure: 'BloodPressure',
+  weighttracker: 'WeightTracker',
+  healthgoals: 'HealthGoals',
+  medicaldocuments: 'MedicalDocuments',
+  doctorreviews: 'DoctorReviews',
+  emergencycontacts: 'EmergencyContacts',
 };
 
 function getNavigation(navigation: any) {
@@ -163,8 +193,70 @@ export default function App() {
 
         <Stack.Screen name="Rating" component={RatingScreen} />
         <Stack.Screen name="Review" component={ReviewScreen} />
+        {/* MY 30 NEW SCREENS */}
+        <Stack.Screen name="MedicalHistory" component={MedicalHistoryScreen} />
+        <Stack.Screen name="HealthOverview" component={HealthOverviewScreen} />
+        <Stack.Screen name="Symptoms" component={SymptomsScreen} />
+        <Stack.Screen name="SymptomDetails" component={SymptomDetailsScreen} />
+        <Stack.Screen name="Diagnosis" component={DiagnosisScreen} />
+        <Stack.Screen name="DiagnosisDetails" component={DiagnosisDetailsScreen} />
+        <Stack.Screen name="Treatment" component={TreatmentScreen} />
+        <Stack.Screen name="TreatmentDetails" component={TreatmentDetailsScreen} />
+        <Stack.Screen name="Vaccination" component={VaccinationScreen} />
+        <Stack.Screen name="VaccinationDetails" component={VaccinationDetailsScreen} />
+        <Stack.Screen name="BloodTest" component={BloodTestScreen} />
+        <Stack.Screen name="TestResults" component={TestResultsScreen} />
+        <Stack.Screen name="Allergy" component={AllergyScreen} />
+        <Stack.Screen name="Emergency" component={EmergencyScreen} />
+        <Stack.Screen name="Insurance" component={InsuranceScreen} />
+        <Stack.Screen name="InsuranceDetails" component={InsuranceDetailsScreen} />
+        <Stack.Screen name="Hospital" component={HospitalScreen} />
+        <Stack.Screen name="HospitalDetails" component={HospitalDetailsScreen} />
+        <Stack.Screen name="Pharmacy" component={PharmacyScreen} />
+        <Stack.Screen name="PharmacyDetails" component={PharmacyDetailsScreen} />
+        <Stack.Screen name="HealthCalendar" component={HealthCalendarScreen} />
+        <Stack.Screen name="SleepTracker" component={SleepTrackerScreen} />
+        <Stack.Screen name="WaterTracker" component={WaterTrackerScreen} />
+        <Stack.Screen name="HeartRate" component={HeartRateScreen} />
+        <Stack.Screen name="BloodPressure" component={BloodPressureScreen} />
+        <Stack.Screen name="WeightTracker" component={WeightTrackerScreen} />
+        <Stack.Screen name="HealthGoals" component={HealthGoalsScreen} />
+        <Stack.Screen name="MedicalDocuments" component={MedicalDocumentsScreen} />
+        <Stack.Screen name="DoctorReviews" component={DoctorReviewsScreen} />
+        <Stack.Screen name="EmergencyContacts" component={EmergencyContactsScreen} />
 
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+// MY 30 SCREENS
+import MedicalHistoryScreen from './src/screens/MedicalHistoryScreen';
+import HealthOverviewScreen from './src/screens/HealthOverviewScreen';
+import SymptomsScreen from './src/screens/SymptomsScreen';
+import SymptomDetailsScreen from './src/screens/SymptomDetailsScreen';
+import DiagnosisScreen from './src/screens/DiagnosisScreen';
+import DiagnosisDetailsScreen from './src/screens/DiagnosisDetailsScreen';
+import TreatmentScreen from './src/screens/TreatmentScreen';
+import TreatmentDetailsScreen from './src/screens/TreatmentDetailsScreen';
+import VaccinationScreen from './src/screens/VaccinationScreen';
+import VaccinationDetailsScreen from './src/screens/VaccinationDetailsScreen';
+import BloodTestScreen from './src/screens/BloodTestScreen';
+import TestResultsScreen from './src/screens/TestResultsScreen';
+import AllergyScreen from './src/screens/AllergyScreen';
+import EmergencyScreen from './src/screens/EmergencyScreen';
+import InsuranceScreen from './src/screens/InsuranceScreen';
+import InsuranceDetailsScreen from './src/screens/InsuranceDetailsScreen';
+import HospitalScreen from './src/screens/HospitalScreen';
+import HospitalDetailsScreen from './src/screens/HospitalDetailsScreen';
+import PharmacyScreen from './src/screens/PharmacyScreen';
+import PharmacyDetailsScreen from './src/screens/PharmacyDetailsScreen';
+import HealthCalendarScreen from './src/screens/HealthCalendarScreen';
+import SleepTrackerScreen from './src/screens/SleepTrackerScreen';
+import WaterTrackerScreen from './src/screens/WaterTrackerScreen';
+import HeartRateScreen from './src/screens/HeartRateScreen';
+import BloodPressureScreen from './src/screens/BloodPressureScreen';
+import WeightTrackerScreen from './src/screens/WeightTrackerScreen';
+import HealthGoalsScreen from './src/screens/HealthGoalsScreen';
+import MedicalDocumentsScreen from './src/screens/MedicalDocumentsScreen';
+import DoctorReviewsScreen from './src/screens/DoctorReviewsScreen';
+import EmergencyContactsScreen from './src/screens/EmergencyContactsScreen';
