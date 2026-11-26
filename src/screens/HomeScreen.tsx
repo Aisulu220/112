@@ -22,60 +22,70 @@ import { doctors } from '../data/doctors';
 import { homeStyles as styles } from '../styles/homeStyles';
 
 export default function HomeScreen({ navigation }: any) {
-
   const [selectedDate, setSelectedDate] = useState('11');
   const [favorites, setFavorites] = useState<number[]>([1]);
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState('Home');
 
-  // FAVORITE FUNCTION
+  // FAVORITES
   const toggleFavorite = (id: number) => {
-    setFavorites((prev) =>
-      prev.includes(id)
-        ? prev.filter((item) => item !== id)
-        : [...prev, id]
+    setFavorites((previous) =>
+      previous.includes(id)
+        ? previous.filter((item) => item !== id)
+        : [...previous, id]
     );
   };
 
-  // SEARCH FUNCTION
+  // SEARCH DOCTORS
   const filteredDoctors = doctors.filter((doctor) =>
-    (
-      doctor.name + ' ' + doctor.specialty
-    ).toLowerCase().includes(search.toLowerCase())
+    `${doctor.name} ${doctor.specialty}`
+      .toLowerCase()
+      .includes(search.trim().toLowerCase())
   );
 
-  // NAVIGATION FUNCTION
+  // NAVIGATION
   const handleNavigation = (tab: string) => {
     setActiveTab(tab);
 
-    if (tab === 'Home') {
-      return;
-    }
+    switch (tab) {
+      case 'Home':
+        return;
 
-    if (tab === 'Doctors') {
-      navigation?.navigate?.('Doctors');
-    } else if (tab === 'Favorite') {
-      navigation?.navigate?.('FavoriteDoctors');
-    } else if (tab === 'Profile') {
-      navigation?.navigate?.('Profile');
-    } else if (tab === 'Calendar') {
-      navigation?.navigate?.('Calendar');
+      case 'Doctors':
+        navigation.navigate('Doctors');
+        break;
+
+      case 'Favorite':
+      case 'Favorites':
+        navigation.navigate('FavoriteDoctors');
+        break;
+
+      case 'Chat':
+        navigation.navigate('Chat');
+        break;
+
+      case 'Profile':
+        navigation.navigate('Profile');
+        break;
+
+      case 'Calendar':
+        navigation.navigate('Calendar');
+        break;
+
+      default:
+        console.log('Unknown tab:', tab);
     }
   };
 
   return (
     <SafeAreaView style={styles.safe}>
-
       <StatusBar barStyle="dark-content" />
 
       <View style={styles.container}>
 
         {/* HEADER */}
-
         <View style={styles.header}>
-
           <View style={styles.profile}>
-
             <View style={styles.userAvatar}>
               <Ionicons
                 name="person"
@@ -86,19 +96,20 @@ export default function HomeScreen({ navigation }: any) {
 
             <View>
               <Text style={styles.welcome}>
-                Hi, WelcomeBack
+                Hi, Welcome Back
               </Text>
 
               <Text style={styles.userName}>
                 John Doe
               </Text>
             </View>
-
           </View>
 
           <View style={styles.headerIcons}>
-
-            <TouchableOpacity style={styles.roundButton}>
+            <TouchableOpacity
+              style={styles.roundButton}
+              onPress={() => navigation.navigate('NotificationSettings')}
+            >
               <Ionicons
                 name="notifications-outline"
                 size={21}
@@ -108,7 +119,7 @@ export default function HomeScreen({ navigation }: any) {
 
             <TouchableOpacity
               style={styles.roundButton}
-              onPress={() => navigation?.navigate?.('Settings')}
+              onPress={() => navigation.navigate('Settings')}
             >
               <Ionicons
                 name="settings-outline"
@@ -116,18 +127,14 @@ export default function HomeScreen({ navigation }: any) {
                 color="#34446D"
               />
             </TouchableOpacity>
-
           </View>
-
         </View>
 
         {/* SEARCH SECTION */}
-
         <View style={styles.searchSection}>
-
           <TouchableOpacity
             style={styles.shortcut}
-            onPress={() => navigation?.navigate?.('Doctors')}
+            onPress={() => navigation.navigate('Doctors')}
           >
             <Ionicons
               name="medkit-outline"
@@ -142,9 +149,7 @@ export default function HomeScreen({ navigation }: any) {
 
           <TouchableOpacity
             style={styles.shortcut}
-            onPress={() =>
-              navigation?.navigate?.('FavoriteDoctors')
-            }
+            onPress={() => navigation.navigate('FavoriteDoctors')}
           >
             <Ionicons
               name="heart-outline"
@@ -158,7 +163,6 @@ export default function HomeScreen({ navigation }: any) {
           </TouchableOpacity>
 
           <View style={styles.searchBox}>
-
             <Ionicons
               name="options-outline"
               size={19}
@@ -171,12 +175,11 @@ export default function HomeScreen({ navigation }: any) {
               style={styles.searchInput}
               value={search}
               onChangeText={setSearch}
+              autoCapitalize="none"
             />
 
             {search.length > 0 ? (
-              <TouchableOpacity
-                onPress={() => setSearch('')}
-              >
+              <TouchableOpacity onPress={() => setSearch('')}>
                 <Ionicons
                   name="close-circle"
                   size={20}
@@ -190,22 +193,18 @@ export default function HomeScreen({ navigation }: any) {
                 color="#7593FF"
               />
             )}
-
           </View>
-
         </View>
 
         {/* MAIN CONTENT */}
-
         <ScrollView
           showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
           contentContainerStyle={styles.scrollContent}
         >
 
           {/* SCHEDULE */}
-
           <View style={styles.dateSection}>
-
             <Text style={styles.sectionTitle}>
               Your Schedule
             </Text>
@@ -214,15 +213,11 @@ export default function HomeScreen({ navigation }: any) {
               selectedDate={selectedDate}
               onSelect={setSelectedDate}
             />
-
           </View>
 
           {/* APPOINTMENT */}
-
           <View style={styles.appointmentSection}>
-
             <View style={styles.appointmentHeader}>
-
               <Text style={styles.timeLabel}>
                 9 AM
               </Text>
@@ -230,82 +225,60 @@ export default function HomeScreen({ navigation }: any) {
               <Text style={styles.todayLabel}>
                 {selectedDate} - Today
               </Text>
-
             </View>
 
             <View style={styles.timeLine}>
-
               <Text style={styles.time}>
                 10 AM
               </Text>
 
               <AppointmentCard />
-
             </View>
 
             <View style={styles.timeRow}>
-
               <Text style={styles.time}>
                 11 AM
               </Text>
 
               <View style={styles.dottedLine} />
-
             </View>
 
             <View style={styles.timeRow}>
-
               <Text style={styles.time}>
-                12 AM
+                12 PM
               </Text>
 
               <View style={styles.dottedLine} />
-
             </View>
-
           </View>
 
-          {/* DOCTORS SECTION */}
-
+          {/* DOCTORS */}
           <View style={styles.doctorsSection}>
-
             <View style={styles.doctorSectionHeader}>
-
               <Text style={styles.sectionTitle}>
                 Available Doctors
               </Text>
 
               <TouchableOpacity
-                onPress={() => navigation?.navigate?.('Doctors')}
+                onPress={() => navigation.navigate('Doctors')}
               >
                 <Text style={styles.seeAll}>
                   See all
                 </Text>
               </TouchableOpacity>
-
             </View>
 
-            {/* DOCTOR LIST */}
-
             {filteredDoctors.map((doctor) => (
-
               <DoctorCard
                 key={doctor.id}
                 doctor={doctor}
                 isFavorite={favorites.includes(doctor.id)}
-                onFavorite={() =>
-                  toggleFavorite(doctor.id)
-                }
+                onFavorite={() => toggleFavorite(doctor.id)}
               />
-
             ))}
 
-            {/* EMPTY SEARCH */}
-
             {filteredDoctors.length === 0 && (
-
               <View style={localStyles.emptyContainer}>
-
                 <Ionicons
                   name="search-outline"
                   size={40}
@@ -319,30 +292,22 @@ export default function HomeScreen({ navigation }: any) {
                 <Text style={localStyles.emptyDescription}>
                   Try searching with another name
                 </Text>
-
               </View>
-
             )}
-
           </View>
-
         </ScrollView>
 
         {/* BOTTOM NAVIGATION */}
-
         <BottomNavigation
           activeTab={activeTab}
           onChange={handleNavigation}
         />
-
       </View>
-
     </SafeAreaView>
   );
 }
 
 const localStyles = StyleSheet.create({
-
   emptyContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -361,5 +326,4 @@ const localStyles = StyleSheet.create({
     color: '#8996BA',
     marginTop: 5,
   },
-
 });

@@ -1,22 +1,34 @@
 import React from 'react';
+
 import {
   View,
   Text,
   StyleSheet,
+  TouchableOpacity,
+  Alert,
 } from 'react-native';
-
-import CustomButton from '../components/CustomButton';
 
 type Props = {
   navigation: (screen: string) => void;
 };
 
 export default function HelloScreen({ navigation }: Props) {
+  const handleContinue = () => {
+    Alert.alert(
+      'Тексеру',
+      'Батырма жұмыс істеп тұр!',
+      [
+        {
+          text: 'OK',
+          onPress: () => navigation('home'),
+        },
+      ]
+    );
+  };
+
   return (
     <View style={styles.container}>
-
-      <Text style={styles.back}
-        onPress={() => navigation('login')}>
+      <Text style={styles.back} onPress={() => navigation('login')}>
         ‹
       </Text>
 
@@ -28,11 +40,12 @@ export default function HelloScreen({ navigation }: Props) {
         You have successfully opened the application.
       </Text>
 
-      <CustomButton
-        title="Continue"
-        onPress={() => navigation('welcome')}
-      />
-
+      <TouchableOpacity
+        style={styles.button}
+        onPress={handleContinue}
+      >
+        <Text style={styles.buttonText}>Continue</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -64,5 +77,16 @@ const styles = StyleSheet.create({
     color: '#888888',
     marginTop: 15,
     marginBottom: 30,
+  },
+  button: {
+    backgroundColor: '#3561F6',
+    padding: 16,
+    borderRadius: 30,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
